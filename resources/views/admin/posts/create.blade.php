@@ -15,6 +15,7 @@
                 </ul>
             </div>
         @endif
+        {{-- GESTISCO GLI ERRORI --}}
 
         <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
