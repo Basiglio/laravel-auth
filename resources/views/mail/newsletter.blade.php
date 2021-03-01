@@ -15,6 +15,5 @@
         <h2>IL BLOGGONE</h2>
         <h2><a href="{{ route('homePagePublic') }}">!! Clicca e leggi i nostri articoli !!</a></h2>
     </div>
-
 </body>
 </html>
