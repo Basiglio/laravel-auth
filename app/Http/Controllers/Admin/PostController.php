@@ -73,14 +73,9 @@ class PostController extends Controller
         $saved = $newPost->save();
 
         if ($saved == true) {
-            Mail::to('mail@mail.it')->send(new BloggoneMail());
-
+            Mail::to('mail@mail.it')->send(new BloggoneMail($newPost));
             return redirect()->route('admin.posts.index');
         }
-
-
-
-
     }
 
     /**
