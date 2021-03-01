@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 Use App\Post;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\BloggoneMail;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -68,9 +70,15 @@ class PostController extends Controller
         $newPost->fill($data); //SETTARE IL FILLABLE NEL MODEL
         // dd($newPost);
         // SALAVATAGGIO
-        $newPost->save();
+        $saved = $newPost->save();
 
-        return redirect()->route('admin.posts.index');
+        if ($saved == true) {
+            Mail::to('mail@mail.it')->send(new BloggoneMail());
+
+            return redirect()->route('admin.posts.index');
+        }
+
+
 
 
     }
